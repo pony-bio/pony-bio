@@ -4,4 +4,4 @@ primitive DNA is Alphabet[DNA]
   
   ATGC: Any of one nucleotide codes (i.e., 4 choose 1)
   """
-  fun letters(): A => "ATGC"
+  fun letters(): DNA => "ATGC"

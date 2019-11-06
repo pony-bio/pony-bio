@@ -4,4 +4,4 @@ primitive RNA is Alphabet[RNA]
   
   AUGC: Any of one nucleotide codes (i.e., 4 choose 1)
   """
-  fun letters(): A => "AUGC"
+  fun letters(): RNA => "AUGC"

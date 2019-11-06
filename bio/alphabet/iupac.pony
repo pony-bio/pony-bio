@@ -6,7 +6,7 @@ primitive IUPAC is Alphabet[IUPAC]
   BDHV: Any of three nucleotide codes (i.e., 4 choose 3)
   N: Any of four nucleotide codes (i.e., 4 choose 4)
   """
-  fun letters(): A => "RYSWKM" + "BDHV" + "N"
+  fun letters(): IUPAC => "RYSWKM" + "BDHV" + "N"
 
 primitive DnaIupac is Alphabet[DnaIupac]
   """
@@ -18,9 +18,9 @@ primitive DnaIupac is Alphabet[DnaIupac]
   BDHV: Any of three nucleotide codes (i.e., 4 choose 3)
   N: Any of four nucleotide codes (i.e., 4 choose 4)
   """
-  fun letters(): A => DNA.letters() + IUPAC.letters() + Gap.letters()
+  fun letters(): DnaIupac => DNA.letters() + IUPAC.letters() + Gap.letters()
 
-primitive RnaIupac is Alphabet
+primitive RnaIupac is Alphabet[RnaIupac]
   """
   RnaIupac is the IUPAC representation of RNA.
   
@@ -30,4 +30,4 @@ primitive RnaIupac is Alphabet
   BDHV: Any of three nucleotide codes (i.e., 4 choose 3)
   N: Any of four nucleotide codes (i.e., 4 choose 4)
   """
-  fun letters(): A => RNA.letters() + IUPAC.letters() + Gap.letters()
+  fun letters(): RnaIupac => RNA.letters() + IUPAC.letters() + Gap.letters()
