@@ -1,6 +1,7 @@
 // in your code this `use` statement would be:
 // use "bio"
 use "../../bio"
+use "../../bio/alphabet"
 
 actor Main
   new create(env: Env) =>

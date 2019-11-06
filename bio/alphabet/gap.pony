@@ -7,4 +7,5 @@ primitive Gap is Alphabet[Gap]
   
   -: Any of zero nucleotide codes (i.e., 4 choose 0)
   """"
-  fun letters(): Gap => "-"
+  fun letters(): Gap => Gap
+  fun box string(): String iso => "-"

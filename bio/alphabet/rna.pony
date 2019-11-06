@@ -4,4 +4,5 @@ primitive RNA is Alphabet[RNA]
   
   AUGC: Any of one nucleotide codes (i.e., 4 choose 1)
   """
-  fun letters(): RNA => "AUGC"
+  fun letters(): RNA => RNA
+  fun box string(): String iso => "AUGC"

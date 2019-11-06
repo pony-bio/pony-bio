@@ -6,7 +6,8 @@ primitive IUPAC is Alphabet[IUPAC]
   BDHV: Any of three nucleotide codes (i.e., 4 choose 3)
   N: Any of four nucleotide codes (i.e., 4 choose 4)
   """
-  fun letters(): IUPAC => "RYSWKM" + "BDHV" + "N"
+  fun letters(): IUPAC => IUPAC
+  fun box string(): String iso => "RYSWKM" + "BDHV" + "N"
 
 primitive DnaIupac is Alphabet[DnaIupac]
   """
@@ -18,7 +19,8 @@ primitive DnaIupac is Alphabet[DnaIupac]
   BDHV: Any of three nucleotide codes (i.e., 4 choose 3)
   N: Any of four nucleotide codes (i.e., 4 choose 4)
   """
-  fun letters(): DnaIupac => DNA.letters() + IUPAC.letters() + Gap.letters()
+  fun letters(): DnaIupac => DnaIupac
+  fun box string(): String iso => DNA.letters() + IUPAC.letters() + Gap.letters()
 
 primitive RnaIupac is Alphabet[RnaIupac]
   """
@@ -30,4 +32,5 @@ primitive RnaIupac is Alphabet[RnaIupac]
   BDHV: Any of three nucleotide codes (i.e., 4 choose 3)
   N: Any of four nucleotide codes (i.e., 4 choose 4)
   """
-  fun letters(): RnaIupac => RNA.letters() + IUPAC.letters() + Gap.letters()
+  fun letters(): RnaIupac => RnaIupac
+  fun box string(): String iso => RNA.letters() + IUPAC.letters() + Gap.letters()

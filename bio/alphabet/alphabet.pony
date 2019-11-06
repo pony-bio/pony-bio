@@ -1,2 +1,2 @@
-trait val Alphabet[A: Stringable val]
+trait val Alphabet[A: Stringable] is Stringable
   fun letters(): A
