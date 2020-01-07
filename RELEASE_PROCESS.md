@@ -11,7 +11,7 @@ You must have commit access to the pony-bio repository
 Please note that this document was written with the assumption that you are using a clone of the `pony-bio` repo. You have to be using a clone rather than a fork. It is advised to your do this by making a fresh clone of the `pony-bio` repo from which you will release.
 
 ```bash
-git clone git@github.com:rhagenson/pony-bio.git pony-bio-release-clean
+git clone git@github.com:pony-bio/pony-bio.git pony-bio-release-clean
 cd pony-bio-release-clean
 ```
 
