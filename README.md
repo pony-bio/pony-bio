@@ -4,7 +4,7 @@ Bioinformatics for the Pony ecosystem.
 
 ## Status
 
-[![CircleCI](https://circleci.com/gh/rhagenson/pony-bio.svg?style=svg)](https://circleci.com/gh/rhagenson/pony-bio)
+[![CircleCI](https://circleci.com/gh/pony-bio/pony-bio.svg?style=svg)](https://circleci.com/gh/pony-bio/pony-bio)
 
 pony-bio is pre-alpha software.
 
@@ -16,7 +16,7 @@ pony-bio is pre-alpha software.
 ```json
 {
   "type": "github",
-  "repo": "rhagenson/pony-bio"
+  "repo": "pony-bio/pony-bio"
 }
 ```
 
