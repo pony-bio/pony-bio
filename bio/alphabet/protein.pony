@@ -1,9 +1,18 @@
-type Protein is Alphabet[AminoAcid]
+class Protein is Alphabet[AminoAcid]
+    fun tag letters(): Array[AminoAcid] val =>
+        [
+            Alanine       ; Cysteine  ; AsparticAcid ; GlutamicAcid
+            Phenylalanine ; Glycine   ; Histidine    ; Isoleucine
+            Lysine        ; Leucine   ; Methionine   ; Asparagine
+            Proline       ; Glutamine ; Arginine     ; Serine
+            Threonine     ; Valine    ; Tryptophan   ; Tyrosine
+        ]
+    fun tag string(): String iso^ => "ACDEFGHIKLMNPQRSTVWXY".clone()
 
-type AminoAcid is (Alanine       | Cysteine  | AsparticAcid | GlutamicAcid | 
-                   Phenylalanine | Glycine   | Histidine    | Isoleucine   | 
-                   Lysine        | Leucine   | Methionine   | Asparagine   | 
-                   Proline       | Glutamine | Arginine     | Serine       | 
+type AminoAcid is (Alanine       | Cysteine  | AsparticAcid | GlutamicAcid |
+                   Phenylalanine | Glycine   | Histidine    | Isoleucine   |
+                   Lysine        | Leucine   | Methionine   | Asparagine   |
+                   Proline       | Glutamine | Arginine     | Serine       |
                    Threonine     | Valine    | Tryptophan   | Tyrosine)
 
 primitive Alanine
