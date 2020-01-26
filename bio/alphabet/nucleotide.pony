@@ -6,7 +6,7 @@ trait NucleotideAlphabet[T: Letter] is Alphabet[T]
     fun val complement(nucleotide: T): T
 
 type RNAType is (Adenine | Cytosine | Guanine | Uracil)
-class RNA is NucleotideAlphabet[RNAType]
+primitive RNA is NucleotideAlphabet[RNAType]
     fun letters(): Array[RNAType] val => [Adenine; Cytosine; Guanine; Uracil]
     fun string(): String iso^ => "ACGU".clone()
 
@@ -27,7 +27,7 @@ class RNA is NucleotideAlphabet[RNAType]
         end
 
 type DNAType is (Adenine | Cytosine | Guanine | Thymine)
-class DNA is NucleotideAlphabet[DNAType]
+primitive DNA is NucleotideAlphabet[DNAType]
     fun letters(): Array[DNAType] val => [Adenine; Cytosine; Guanine; Thymine]
     fun string(): String iso^ => "ACGT".clone()
 
@@ -50,7 +50,7 @@ class DNA is NucleotideAlphabet[DNAType]
 type IUPACType is (Adenine | Cytosine | Guanine | Thymine
     | Amino | Purine | Weak | Strong | Pyrimidine | Keto
     | V | H | D | B | N)
-class IUPAC is NucleotideAlphabet[IUPACType]
+primitive IUPAC is NucleotideAlphabet[IUPACType]
     fun letters(): Array[IUPACType] val =>
         [
             Adenine; Cytosine; Guanine; Thymine
@@ -66,7 +66,7 @@ class IUPAC is NucleotideAlphabet[IUPACType]
         | "G" => Guanine
         | "T" => Thymine
         | "M" => Amino
-        | "P" => Purine
+        | "R" => Purine
         | "W" => Weak
         | "S" => Strong
         | "Y" => Pyrimidine
@@ -90,7 +90,7 @@ class IUPAC is NucleotideAlphabet[IUPACType]
         // Note: both Weak and Strong are self-complementing
         | Weak => Weak
         | Strong => Strong
-        | Pyrimidine => Pyrimidine
+        | Pyrimidine => Purine
         | Keto => Amino
         | V => B
         | H => D
