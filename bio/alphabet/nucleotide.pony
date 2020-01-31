@@ -1,12 +1,7 @@
 type Nucleotide is (DNAType | RNAType)
 
-trait NucleotideAlphabet[T: Letter] is Alphabet[T]
-    new val create()
-    fun val parse(letter: String): (T | None)
-    fun val complement(nucleotide: T): T
-
 type RNAType is (Adenine | Cytosine | Guanine | Uracil)
-primitive RNA is NucleotideAlphabet[RNAType]
+primitive RNA is ComplementAlphabet[RNAType]
     fun letters(): Array[RNAType] val => [Adenine; Cytosine; Guanine; Uracil]
     fun string(): String iso^ => "ACGU".clone()
 
@@ -27,7 +22,7 @@ primitive RNA is NucleotideAlphabet[RNAType]
         end
 
 type DNAType is (Adenine | Cytosine | Guanine | Thymine)
-primitive DNA is NucleotideAlphabet[DNAType]
+primitive DNA is ComplementAlphabet[DNAType]
     fun letters(): Array[DNAType] val => [Adenine; Cytosine; Guanine; Thymine]
     fun string(): String iso^ => "ACGT".clone()
 
@@ -50,7 +45,7 @@ primitive DNA is NucleotideAlphabet[DNAType]
 type IUPACType is (Adenine | Cytosine | Guanine | Thymine
     | Amino | Purine | Weak | Strong | Pyrimidine | Keto
     | V | H | D | B | N)
-primitive IUPAC is NucleotideAlphabet[IUPACType]
+primitive IUPAC is ComplementAlphabet[IUPACType]
     fun letters(): Array[IUPACType] val =>
         [
             Adenine; Cytosine; Guanine; Thymine

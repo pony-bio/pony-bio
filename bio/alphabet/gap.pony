@@ -1,13 +1,23 @@
 type GapType is (Dash | Dot)
 
-primitive Gapped[T: Letter val, U: NucleotideAlphabet[T] val] is NucleotideAlphabet[(T | GapType)]
+class Gapped[T: Letter val, U: Alphabet[T] val] is Alphabet[(T | GapType)]
     fun letters(): Array[(T | GapType)] val =>
         recover val
-            let res = [as (T | GapType): Dash; Dot]
-            res.concat(U.letters().values())
+            let l = U.letters()
+            let res = Array[(T | GapType)](l.size() + 2)
+            res.append([as (T | GapType): Dot; Dash])
+            res.append(l)
             res
         end
-    fun string(): String iso^ => (U.string().clone() + "-.").clone()
+
+    fun string(): String iso^ =>
+        recover iso
+            let a = recover iso U.string() end
+            let res = String(a.size() + 2)
+            res.append(consume a)
+            res.append(".-")
+            res
+        end
 
     fun parse(letter: String): (T | GapType | None) =>
         match letter
@@ -16,12 +26,12 @@ primitive Gapped[T: Letter val, U: NucleotideAlphabet[T] val] is NucleotideAlpha
         else U.parse(letter)
         end
 
-    fun complement(nucleotide: (T | GapType)): (T | GapType) =>
-        match nucleotide
-        | Dash => Dash
-        | Dot => Dot
-        | let x: T => U.complement(x)
-        end
+    // fun complement(nucleotide: (T | GapType)): (T | GapType) =>
+    //     match nucleotide
+    //     | Dash => Dash
+    //     | Dot => Dot
+    //     | let x: T => U.complement(x)
+    //     end
 
 primitive Dash
     fun string(): String val => "-"

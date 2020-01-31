@@ -2,8 +2,13 @@
 // that has shortcode(), fullname(), etc
 
 interface val Letter
-  fun string(): String val
-  fun oneletter(): String val
+    fun string(): String val
+    fun oneletter(): String val
 
-trait val Alphabet[A: Letter] is Stringable
-  fun letters(): Array[A] val
+trait val Alphabet[L: Letter val] is Stringable
+    new val create()
+    fun letters(): Array[L] val
+    fun parse(letter: String): (L | None)
+
+trait val ComplementAlphabet[L: Letter val] is Alphabet[L]
+    fun complement(nucleotide: L): L

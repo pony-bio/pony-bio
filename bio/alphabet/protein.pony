@@ -1,5 +1,5 @@
-class Protein is Alphabet[AminoAcid]
-    fun tag letters(): Array[AminoAcid] val =>
+class val Protein is Alphabet[AminoAcid]
+    fun letters(): Array[AminoAcid] val =>
         [
             Alanine       ; Cysteine  ; AsparticAcid ; GlutamicAcid
             Phenylalanine ; Glycine   ; Histidine    ; Isoleucine
@@ -7,7 +7,8 @@ class Protein is Alphabet[AminoAcid]
             Proline       ; Glutamine ; Arginine     ; Serine
             Threonine     ; Valine    ; Tryptophan   ; Tyrosine
         ]
-    fun tag string(): String iso^ => "ACDEFGHIKLMNPQRSTVWXY".clone()
+    fun string(): String iso^ => "ACDEFGHIKLMNPQRSTVWXY".clone()
+    fun parse(raw: String val): (AminoAcid | None) => None // TODO
 
 type AminoAcid is (Alanine       | Cysteine  | AsparticAcid | GlutamicAcid |
                    Phenylalanine | Glycine   | Histidine    | Isoleucine   |
