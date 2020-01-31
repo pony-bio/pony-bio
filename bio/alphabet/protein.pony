@@ -66,101 +66,101 @@ type AminoAcid is (Alanine       | Cysteine  | AsparticAcid | GlutamicAcid |
                    Threonine     | Valine    | Tryptophan   | Tyrosine)
 
 primitive Alanine
-    fun box string(): String => "Alanine"
-    fun box oneletter(): String => "A"
-    fun box threeletter(): String => "Ala"
+    fun string(): String iso^ => "Alanine".clone()
+    fun oneletter(): String => "A"
+    fun threeletter(): String => "Ala"
 
 primitive Cysteine
-    fun box string(): String => "Cysteine"
-    fun box oneletter(): String => "C"
-    fun box threeletter(): String => "Cys"
+    fun string(): String iso^ => "Cysteine".clone()
+    fun oneletter(): String => "C"
+    fun threeletter(): String => "Cys"
 
 primitive AsparticAcid
-    fun box string(): String => "Aspartic Acid"
-    fun box oneletter(): String => "D"
-    fun box threeletter(): String => "Asp"
+    fun string(): String iso^ => "Aspartic Acid".clone()
+    fun oneletter(): String => "D"
+    fun threeletter(): String => "Asp"
 
 primitive GlutamicAcid
-    fun box string(): String => "Glutamic Acid"
-    fun box oneletter(): String => "E"
-    fun box threeletter(): String => "Glu"
+    fun string(): String iso^ => "Glutamic Acid".clone()
+    fun oneletter(): String => "E"
+    fun threeletter(): String => "Glu"
 
 primitive Phenylalanine
-    fun box string(): String => "Phenylalanine"
-    fun box oneletter(): String => "F"
-    fun box threeletter(): String => "Phe"
+    fun string(): String iso^ => "Phenylalanine".clone()
+    fun oneletter(): String => "F"
+    fun threeletter(): String => "Phe"
 
 primitive Glycine
-    fun box string(): String => "Glycine"
-    fun box oneletter(): String => "G"
-    fun box threeletter(): String => "Gly"
+    fun string(): String iso^ => "Glycine".clone()
+    fun oneletter(): String => "G"
+    fun threeletter(): String => "Gly"
 
 primitive Histidine
-    fun box string(): String => "Histidine"
-    fun box oneletter(): String => "H"
-    fun box threeletter(): String => "His"
+    fun string(): String iso^ => "Histidine".clone()
+    fun oneletter(): String => "H"
+    fun threeletter(): String => "His"
 
 primitive Isoleucine
-    fun box string(): String => "Isoleucine"
-    fun box oneletter(): String => "I"
-    fun box threeletter(): String => "Ile"
+    fun string(): String iso^ => "Isoleucine".clone()
+    fun oneletter(): String => "I"
+    fun threeletter(): String => "Ile"
 
 primitive Lysine
-    fun box string(): String => "Lysine"
-    fun box oneletter(): String => "K"
-    fun box threeletter(): String => "Lys"
+    fun string(): String iso^ => "Lysine".clone()
+    fun oneletter(): String => "K"
+    fun threeletter(): String => "Lys"
 
 primitive Leucine
-    fun box string(): String => "Leucine"
-    fun box oneletter(): String => "L"
-    fun box threeletter(): String => "Leu"
+    fun string(): String iso^ => "Leucine".clone()
+    fun oneletter(): String => "L"
+    fun threeletter(): String => "Leu"
 
 primitive Methionine
-    fun box string(): String => "Methionine"
-    fun box oneletter(): String => "M"
-    fun box threeletter(): String => "Met"
+    fun string(): String iso^ => "Methionine".clone()
+    fun oneletter(): String => "M"
+    fun threeletter(): String => "Met"
 
 primitive Asparagine
-    fun box string(): String => "Asparagine"
-    fun box oneletter(): String => "N"
-    fun box threeletter(): String => "Asn"
+    fun string(): String iso^ => "Asparagine".clone()
+    fun oneletter(): String => "N"
+    fun threeletter(): String => "Asn"
 
 primitive Proline
-    fun box string(): String => "Proline"
-    fun box oneletter(): String => "P"
-    fun box threeletter(): String => "Pro"
+    fun string(): String iso^ => "Proline".clone()
+    fun oneletter(): String => "P"
+    fun threeletter(): String => "Pro"
 
 primitive Glutamine
-    fun box string(): String => "Glutamine"
-    fun box oneletter(): String => "Q"
-    fun box threeletter(): String => "Gln"
+    fun string(): String iso^ => "Glutamine".clone()
+    fun oneletter(): String => "Q"
+    fun threeletter(): String => "Gln"
 
 primitive Arginine
-    fun box string(): String => "Arginine"
-    fun box oneletter(): String => "R"
-    fun box threeletter(): String => "Arg"
+    fun string(): String iso^ => "Arginine".clone()
+    fun oneletter(): String => "R"
+    fun threeletter(): String => "Arg"
 
 primitive Serine
-    fun box string(): String => "Serine"
-    fun box oneletter(): String => "S"
-    fun box threeletter(): String => "Ser"
+    fun string(): String iso^ => "Serine".clone()
+    fun oneletter(): String => "S"
+    fun threeletter(): String => "Ser"
 
 primitive Threonine
-    fun box string(): String => "Threonine"
-    fun box oneletter(): String => "T"
-    fun box threeletter(): String => "Thr"
+    fun string(): String iso^ => "Threonine".clone()
+    fun oneletter(): String => "T"
+    fun threeletter(): String => "Thr"
 
 primitive Valine
-    fun box string(): String => "Valine"
-    fun box oneletter(): String => "V"
-    fun box threeletter(): String => "Val"
+    fun string(): String iso^ => "Valine".clone()
+    fun oneletter(): String => "V"
+    fun threeletter(): String => "Val"
 
 primitive Tryptophan
-    fun box string(): String => "Tryptophan"
-    fun box oneletter(): String => "W"
-    fun box threeletter(): String => "Trp"
+    fun string(): String iso^ => "Tryptophan".clone()
+    fun oneletter(): String => "W"
+    fun threeletter(): String => "Trp"
 
 primitive Tyrosine
-    fun box string(): String => "Tyrosined"
-    fun box oneletter(): String => "Y"
-    fun box threeletter(): String => "Tyr"
+    fun string(): String iso^ => "Tyrosined".clone()
+    fun oneletter(): String => "Y"
+    fun threeletter(): String => "Tyr"

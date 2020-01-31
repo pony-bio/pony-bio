@@ -1,6 +1,7 @@
 type Nucleotide is (DNAType | RNAType)
 
 type RNAType is (Adenine | Cytosine | Guanine | Uracil)
+type GappedRNA is Gapped[RNAType, RNA]
 primitive RNA is ComplementAlphabet[RNAType]
     fun letters(): Array[RNAType] val => [Adenine; Cytosine; Guanine; Uracil]
     fun string(): String iso^ => "ACGU".clone()
@@ -22,6 +23,7 @@ primitive RNA is ComplementAlphabet[RNAType]
         end
 
 type DNAType is (Adenine | Cytosine | Guanine | Thymine)
+type GappedDNA is Gapped[DNAType, DNA]
 primitive DNA is ComplementAlphabet[DNAType]
     fun letters(): Array[DNAType] val => [Adenine; Cytosine; Guanine; Thymine]
     fun string(): String iso^ => "ACGT".clone()
@@ -45,6 +47,7 @@ primitive DNA is ComplementAlphabet[DNAType]
 type IUPACType is (Adenine | Cytosine | Guanine | Thymine
     | Amino | Purine | Weak | Strong | Pyrimidine | Keto
     | V | H | D | B | N)
+type GappedIUPAC is Gapped[IUPACType, IUPAC]
 primitive IUPAC is ComplementAlphabet[IUPACType]
     fun letters(): Array[IUPACType] val =>
         [
@@ -95,67 +98,67 @@ primitive IUPAC is ComplementAlphabet[IUPACType]
         end
 
 primitive Adenine
-    fun string(): String => "Adenine"
+    fun string(): String iso^ => "Adenine".clone()
     fun oneletter(): String => "A"
 
 primitive Guanine
-    fun string(): String => "Guanine"
+    fun string(): String iso^ => "Guanine".clone()
     fun oneletter(): String => "G"
 
 primitive Thymine
-    fun string(): String => "Thymine"
+    fun string(): String iso^ => "Thymine".clone()
     fun oneletter(): String => "T"
 
 primitive Cytosine
-    fun string(): String => "Cytosine"
+    fun string(): String iso^ => "Cytosine".clone()
     fun oneletter(): String => "C"
 
 primitive Uracil
-    fun string(): String =>  "Uracil"
+    fun string(): String iso^ =>  "Uracil".clone()
     fun oneletter(): String => "U"
 
 // Start IUPAC nucleotide codes
 // See: https://www.bioinformatics.org/sms/iupac.html
 primitive Amino // (Adenine | Cytosine)
-    fun string(): String => "Amino"
+    fun string(): String iso^ => "Amino".clone()
     fun oneletter(): String => "M"
 
 primitive Purine // (Adenine | Guanine)
-    fun string(): String => "Purine"
+    fun string(): String iso^ => "Purine".clone()
     fun oneletter(): String => "R"
 
 primitive Weak // (Adenine | Thymine)
-    fun string(): String => "Weak"
+    fun string(): String iso^ => "Weak".clone()
     fun oneletter(): String => "W"
 
 primitive Strong // (Adenine | Guanine)
-    fun string(): String => "Strong"
+    fun string(): String iso^ => "Strong".clone()
     fun oneletter(): String => "S"
 
 primitive Pyrimidine // (Cytosine | Thymine)
-    fun string(): String => "Pyrimidine"
+    fun string(): String iso^ => "Pyrimidine".clone()
     fun oneletter(): String => "Y"
 
 primitive Keto // (Guanine | Thymine)
-    fun string(): String => "Keto"
+    fun string(): String iso^ => "Keto".clone()
     fun oneletter(): String => "K"
 
 primitive V // (Adenine | Cytosine | Thymine)
-    fun string(): String => "V"
+    fun string(): String iso^ => "V".clone()
     fun oneletter(): String => "V"
 
 primitive H // (Adenine | Cytosine | Thymine)
-    fun string(): String => "H"
+    fun string(): String iso^ => "H".clone()
     fun oneletter(): String => "H"
 
 primitive D // (Adenine | Cytosine | Thymine)
-    fun string(): String => "D"
+    fun string(): String iso^ => "D".clone()
     fun oneletter(): String => "D"
 
 primitive B // (Cytosine | Guanine | Thymine)
-    fun string(): String => "B"
+    fun string(): String iso^ => "B".clone()
     fun oneletter(): String => "B"
 
 primitive N // (Adenine | Guanine | Cytosine | Thymine)
-    fun string(): String => "N"
+    fun string(): String iso^ => "N".clone()
     fun oneletter(): String => "N"

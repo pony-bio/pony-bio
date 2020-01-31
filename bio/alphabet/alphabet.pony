@@ -1,8 +1,7 @@
 // TODO: Make appropriate trait other than Stringable
 // that has shortcode(), fullname(), etc
 
-interface val Letter
-    fun string(): String val
+interface val Letter is Stringable
     fun oneletter(): String val
 
 trait val Alphabet[L: Letter val] is Stringable

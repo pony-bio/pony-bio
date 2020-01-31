@@ -60,9 +60,9 @@ class ComplementGapped[T: Letter val, U: ComplementAlphabet[T] val] is Complemen
         end
 
 primitive Dash
-    fun string(): String val => "-"
-    fun oneletter(): String val => "-"
+    fun string(): String iso^ => "-".clone()
+    fun oneletter(): String => "-"
 
 primitive Dot
-    fun string(): String val => "."
-    fun oneletter(): String val => "."
+    fun string(): String iso^ => ".".clone()
+    fun oneletter(): String => "."
