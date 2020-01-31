@@ -95,67 +95,67 @@ primitive IUPAC is ComplementAlphabet[IUPACType]
         end
 
 primitive Adenine
-    fun string(): String val => "Adenine"
-    fun oneletter(): String val => "A"
+    fun string(): String => "Adenine"
+    fun oneletter(): String => "A"
 
 primitive Guanine
-    fun string(): String val => "Guanine"
-    fun oneletter(): String val => "G"
+    fun string(): String => "Guanine"
+    fun oneletter(): String => "G"
 
 primitive Thymine
-    fun string(): String val => "Thymine"
-    fun oneletter(): String val => "T"
+    fun string(): String => "Thymine"
+    fun oneletter(): String => "T"
 
 primitive Cytosine
-    fun string(): String val => "Cytosine"
-    fun oneletter(): String val => "C"
+    fun string(): String => "Cytosine"
+    fun oneletter(): String => "C"
 
 primitive Uracil
-    fun string(): String val =>  "Uracil"
-    fun oneletter(): String val => "U"
+    fun string(): String =>  "Uracil"
+    fun oneletter(): String => "U"
 
 // Start IUPAC nucleotide codes
 // See: https://www.bioinformatics.org/sms/iupac.html
 primitive Amino // (Adenine | Cytosine)
-    fun string(): String val => "Amino"
-    fun oneletter(): String val => "M"
+    fun string(): String => "Amino"
+    fun oneletter(): String => "M"
 
 primitive Purine // (Adenine | Guanine)
-    fun string(): String val => "Purine"
-    fun oneletter(): String val => "R"
+    fun string(): String => "Purine"
+    fun oneletter(): String => "R"
 
 primitive Weak // (Adenine | Thymine)
-    fun string(): String val => "Weak"
-    fun oneletter(): String val => "W"
+    fun string(): String => "Weak"
+    fun oneletter(): String => "W"
 
 primitive Strong // (Adenine | Guanine)
-    fun string(): String val => "Strong"
-    fun oneletter(): String val => "S"
+    fun string(): String => "Strong"
+    fun oneletter(): String => "S"
 
 primitive Pyrimidine // (Cytosine | Thymine)
-    fun string(): String val => "Pyrimidine"
-    fun oneletter(): String val => "Y"
+    fun string(): String => "Pyrimidine"
+    fun oneletter(): String => "Y"
 
 primitive Keto // (Guanine | Thymine)
-    fun string(): String val => "Keto"
-    fun oneletter(): String val => "K"
+    fun string(): String => "Keto"
+    fun oneletter(): String => "K"
 
 primitive V // (Adenine | Cytosine | Thymine)
-    fun string(): String val => "V"
-    fun oneletter(): String val => "V"
+    fun string(): String => "V"
+    fun oneletter(): String => "V"
 
 primitive H // (Adenine | Cytosine | Thymine)
-    fun string(): String val => "H"
-    fun oneletter(): String val => "H"
+    fun string(): String => "H"
+    fun oneletter(): String => "H"
 
 primitive D // (Adenine | Cytosine | Thymine)
-    fun string(): String val => "D"
-    fun oneletter(): String val => "D"
+    fun string(): String => "D"
+    fun oneletter(): String => "D"
 
 primitive B // (Cytosine | Guanine | Thymine)
-    fun string(): String val => "B"
-    fun oneletter(): String val => "B"
+    fun string(): String => "B"
+    fun oneletter(): String => "B"
 
 primitive N // (Adenine | Guanine | Cytosine | Thymine)
-    fun string(): String val => "N"
-    fun oneletter(): String val => "N"
+    fun string(): String => "N"
+    fun oneletter(): String => "N"

@@ -7,8 +7,57 @@ class val Protein is Alphabet[AminoAcid]
             Proline       ; Glutamine ; Arginine     ; Serine
             Threonine     ; Valine    ; Tryptophan   ; Tyrosine
         ]
-    fun string(): String iso^ => "ACDEFGHIKLMNPQRSTVWXY".clone()
-    fun parse(raw: String val): (AminoAcid | None) => None // TODO
+    fun string(): String iso^ => "ACDEFGHIKLMNPQRSTVWY".clone()
+    fun parse(raw: String): (AminoAcid | None) =>
+        if raw.size() == 1 then
+            try
+                match raw.upper().at_offset(1)?
+                | 'A' => Alanine
+                | 'C' => Cysteine
+                | 'D' => AsparticAcid
+                | 'E' => GlutamicAcid
+                | 'F' => Phenylalanine
+                | 'G' => Glycine
+                | 'H' => Histidine
+                | 'I' => Isoleucine
+                | 'K' => Lysine
+                | 'L' => Leucine
+                | 'M' => Methionine
+                | 'N' => Asparagine
+                | 'P' => Proline
+                | 'Q' => Glutamine
+                | 'R' => Arginine
+                | 'S' => Serine
+                | 'T' => Threonine
+                | 'V' => Valine
+                | 'W' => Tryptophan
+                | 'Y' => Tyrosine
+                end
+            end
+        elseif raw.size() == 3 then
+            match raw.upper()
+            | "ALA" => Alanine
+            | "CYS" => Cysteine
+            | "ASP" => AsparticAcid
+            | "GLU" => GlutamicAcid
+            | "PHE" => Phenylalanine
+            | "GLY" => Glycine
+            | "HIS" => Histidine
+            | "ILE" => Isoleucine
+            | "LYS" => Lysine
+            | "LEU" => Leucine
+            | "MET" => Methionine
+            | "ASN" => Asparagine
+            | "PRO" => Proline
+            | "GLN" => Glutamine
+            | "ARG" => Arginine
+            | "SER" => Serine
+            | "THR" => Threonine
+            | "VAL" => Valine
+            | "TRP" => Tryptophan
+            | "TYR" => Tyrosine
+            end
+        end
 
 type AminoAcid is (Alanine       | Cysteine  | AsparticAcid | GlutamicAcid |
                    Phenylalanine | Glycine   | Histidine    | Isoleucine   |
@@ -17,101 +66,101 @@ type AminoAcid is (Alanine       | Cysteine  | AsparticAcid | GlutamicAcid |
                    Threonine     | Valine    | Tryptophan   | Tyrosine)
 
 primitive Alanine
-    fun box string(): String val => "Alanine"
-    fun box oneletter(): String val => "A"
-    fun box threeletter(): String val => "Ala"
+    fun box string(): String => "Alanine"
+    fun box oneletter(): String => "A"
+    fun box threeletter(): String => "Ala"
 
 primitive Cysteine
-    fun box string(): String val => "Cysteine"
-    fun box oneletter(): String val => "C"
-    fun box threeletter(): String val => "Cys"
+    fun box string(): String => "Cysteine"
+    fun box oneletter(): String => "C"
+    fun box threeletter(): String => "Cys"
 
 primitive AsparticAcid
-    fun box string(): String val => "Aspartic Acid"
-    fun box oneletter(): String val => "D"
-    fun box threeletter(): String val => "Asp"
+    fun box string(): String => "Aspartic Acid"
+    fun box oneletter(): String => "D"
+    fun box threeletter(): String => "Asp"
 
 primitive GlutamicAcid
-    fun box string(): String val => "Glutamic Acid"
-    fun box oneletter(): String val => "E"
-    fun box threeletter(): String val => "Glu"
+    fun box string(): String => "Glutamic Acid"
+    fun box oneletter(): String => "E"
+    fun box threeletter(): String => "Glu"
 
 primitive Phenylalanine
-    fun box string(): String val => "Phenylalanine"
-    fun box oneletter(): String val => "F"
-    fun box threeletter(): String val => "Phe"
+    fun box string(): String => "Phenylalanine"
+    fun box oneletter(): String => "F"
+    fun box threeletter(): String => "Phe"
 
 primitive Glycine
-    fun box string(): String val => "Glycine"
-    fun box oneletter(): String val => "G"
-    fun box threeletter(): String val => "Gly"
+    fun box string(): String => "Glycine"
+    fun box oneletter(): String => "G"
+    fun box threeletter(): String => "Gly"
 
 primitive Histidine
-    fun box string(): String val => "Histidine"
-    fun box oneletter(): String val => "H"
-    fun box threeletter(): String val => "His"
+    fun box string(): String => "Histidine"
+    fun box oneletter(): String => "H"
+    fun box threeletter(): String => "His"
 
 primitive Isoleucine
-    fun box string(): String val => "Isoleucine"
-    fun box oneletter(): String val => "I"
-    fun box threeletter(): String val => "Ile"
+    fun box string(): String => "Isoleucine"
+    fun box oneletter(): String => "I"
+    fun box threeletter(): String => "Ile"
 
 primitive Lysine
-    fun box string(): String val => "Lysine"
-    fun box oneletter(): String val => "K"
-    fun box threeletter(): String val => "Lys"
+    fun box string(): String => "Lysine"
+    fun box oneletter(): String => "K"
+    fun box threeletter(): String => "Lys"
 
 primitive Leucine
-    fun box string(): String val => "Leucine"
-    fun box oneletter(): String val => "L"
-    fun box threeletter(): String val => "Leu"
+    fun box string(): String => "Leucine"
+    fun box oneletter(): String => "L"
+    fun box threeletter(): String => "Leu"
 
 primitive Methionine
-    fun box string(): String val => "Methionine"
-    fun box oneletter(): String val => "M"
-    fun box threeletter(): String val => "Met"
+    fun box string(): String => "Methionine"
+    fun box oneletter(): String => "M"
+    fun box threeletter(): String => "Met"
 
 primitive Asparagine
-    fun box string(): String val => "Asparagine"
-    fun box oneletter(): String val => "N"
-    fun box threeletter(): String val => "Asn"
+    fun box string(): String => "Asparagine"
+    fun box oneletter(): String => "N"
+    fun box threeletter(): String => "Asn"
 
 primitive Proline
-    fun box string(): String val => "Proline"
-    fun box oneletter(): String val => "P"
-    fun box threeletter(): String val => "Pro"
+    fun box string(): String => "Proline"
+    fun box oneletter(): String => "P"
+    fun box threeletter(): String => "Pro"
 
 primitive Glutamine
-    fun box string(): String val => "Glutamine"
-    fun box oneletter(): String val => "Q"
-    fun box threeletter(): String val => "Gln"
+    fun box string(): String => "Glutamine"
+    fun box oneletter(): String => "Q"
+    fun box threeletter(): String => "Gln"
 
 primitive Arginine
-    fun box string(): String val => "Arginine"
-    fun box oneletter(): String val => "R"
-    fun box threeletter(): String val => "Arg"
+    fun box string(): String => "Arginine"
+    fun box oneletter(): String => "R"
+    fun box threeletter(): String => "Arg"
 
 primitive Serine
-    fun box string(): String val => "Serine"
-    fun box oneletter(): String val => "S"
-    fun box threeletter(): String val => "Ser"
+    fun box string(): String => "Serine"
+    fun box oneletter(): String => "S"
+    fun box threeletter(): String => "Ser"
 
 primitive Threonine
-    fun box string(): String val => "Threonine"
-    fun box oneletter(): String val => "T"
-    fun box threeletter(): String val => "Thr"
+    fun box string(): String => "Threonine"
+    fun box oneletter(): String => "T"
+    fun box threeletter(): String => "Thr"
 
 primitive Valine
-    fun box string(): String val => "Valine"
-    fun box oneletter(): String val => "V"
-    fun box threeletter(): String val => "Val"
+    fun box string(): String => "Valine"
+    fun box oneletter(): String => "V"
+    fun box threeletter(): String => "Val"
 
 primitive Tryptophan
-    fun box string(): String val => "Tryptophan"
-    fun box oneletter(): String val => "W"
-    fun box threeletter(): String val => "Trp"
+    fun box string(): String => "Tryptophan"
+    fun box oneletter(): String => "W"
+    fun box threeletter(): String => "Trp"
 
 primitive Tyrosine
-    fun box string(): String val => "Tyrosined"
-    fun box oneletter(): String val => "Y"
-    fun box threeletter(): String val => "Tyr"
+    fun box string(): String => "Tyrosined"
+    fun box oneletter(): String => "Y"
+    fun box threeletter(): String => "Tyr"
