@@ -2,7 +2,7 @@ type Nucleotide is (DNAType | RNAType)
 
 type RNAType is (Adenine | Cytosine | Guanine | Uracil)
 type GappedRNA is Gapped[RNAType, RNA]
-primitive RNA is ComplementAlphabet[RNAType]
+primitive RNA is (Alphabet[RNAType] & Complement[RNAType])
     fun letters(): Array[RNAType] val => [Adenine; Cytosine; Guanine; Uracil]
     fun string(): String iso^ => "ACGU".clone()
 
@@ -24,7 +24,7 @@ primitive RNA is ComplementAlphabet[RNAType]
 
 type DNAType is (Adenine | Cytosine | Guanine | Thymine)
 type GappedDNA is Gapped[DNAType, DNA]
-primitive DNA is ComplementAlphabet[DNAType]
+primitive DNA is (Alphabet[DNAType] & Complement[DNAType])
     fun letters(): Array[DNAType] val => [Adenine; Cytosine; Guanine; Thymine]
     fun string(): String iso^ => "ACGT".clone()
 
@@ -48,7 +48,7 @@ type IUPACType is (Adenine | Cytosine | Guanine | Thymine
     | Amino | Purine | Weak | Strong | Pyrimidine | Keto
     | V | H | D | B | N)
 type GappedIUPAC is Gapped[IUPACType, IUPAC]
-primitive IUPAC is ComplementAlphabet[IUPACType]
+primitive IUPAC is (Alphabet[IUPACType] & Complement[IUPACType])
     fun letters(): Array[IUPACType] val =>
         [
             Adenine; Cytosine; Guanine; Thymine

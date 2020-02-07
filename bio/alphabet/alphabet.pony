@@ -9,5 +9,5 @@ trait val Alphabet[L: Letter val] is Stringable
     fun letters(): Array[L] val
     fun parse(letter: String): (L | None)
 
-trait val ComplementAlphabet[L: Letter val] is Alphabet[L]
-    fun complement(nucleotide: L): L
+trait val Complement[L: Letter val]
+    fun complement(letter: L): L => letter
