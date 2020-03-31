@@ -16,7 +16,7 @@ Additional notes regarding formatting:
 
 ## Bug report
 
-First of all please [search existing issues](https://github.com/rhagenson/pony-bio/issues) to make sure your issue hasn't already been reported. If you cannot find a suitable issue — [create a new one](https://github.com/rhagenson/pony-bio/issues/new).
+First of all please [search existing issues](https://github.com/pony-bio/pony-bio/issues) to make sure your issue hasn't already been reported. If you cannot find a suitable issue — [create a new one](https://github.com/pony-bio/pony-bio/issues/new).
 
 Provide the following details:
 
