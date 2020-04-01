@@ -59,6 +59,21 @@ class val Protein is Alphabet[AminoAcid]
             end
         end
 
+class val ThreeLetterProtein is Alphabet[AminoAcid]
+    fun letters(): Array[AminoAcid] val => Protein.letters()
+
+    fun parse(raw: String) => Protein.parse(raw)
+
+    fun string(): String iso^ =>
+        recover iso
+            let arr = this.letters()
+            let str = String(arr.size() * 3)
+            for l in arr.values() do
+                str.append(l.code_long())
+            end
+            str
+        end
+
 type AminoAcid is (Alanine       | Cysteine  | AsparticAcid | GlutamicAcid |
                    Phenylalanine | Glycine   | Histidine    | Isoleucine   |
                    Lysine        | Leucine   | Methionine   | Asparagine   |
