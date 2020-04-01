@@ -7,7 +7,7 @@ class val Protein is Alphabet[AminoAcid]
             Proline       ; Glutamine ; Arginine     ; Serine
             Threonine     ; Valine    ; Tryptophan   ; Tyrosine
         ]
-    fun string(): String iso^ => "ACDEFGHIKLMNPQRSTVWY".clone()
+
     fun parse(raw: String): (AminoAcid | None) =>
         if raw.size() == 1 then
             try

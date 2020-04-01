@@ -12,6 +12,15 @@ trait val Alphabet[L: Letter val] is Stringable
         false
     fun letters(): Array[L] val
     fun parse(letter: String): (L | None)
+    fun string(): String iso^ => 
+        recover iso
+            let arr = this.letters()
+            let str = String(arr.size())
+            for l in arr.values() do 
+                str.append(l.oneletter())
+            end
+            str
+        end
 
 interface val Complement[L: Letter val]
     fun complement(letter: L): L => letter
