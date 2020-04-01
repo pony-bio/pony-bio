@@ -1,6 +1,9 @@
 type GapType is (Dash | Dot)
 
 class Gapped[T: Letter val, U: (Alphabet[T] val & Complement[T] val)] is (Alphabet[(T | GapType)] & Complement[(T | GapType)])
+    """
+    Extends the alphabet `U` with `Dash` and `Dot`.
+    """
     fun letters(): Array[(T | GapType)] val =>
         recover val
             let l = U.letters()
@@ -26,8 +29,8 @@ class Gapped[T: Letter val, U: (Alphabet[T] val & Complement[T] val)] is (Alphab
 
 primitive Dash
     fun string(): String iso^ => "-".clone()
-    fun oneletter(): String => "-"
+    fun code(): String => "-"
 
 primitive Dot
     fun string(): String iso^ => ".".clone()
-    fun oneletter(): String => "."
+    fun code(): String => "."
