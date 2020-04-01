@@ -4,7 +4,6 @@ type RNAType is (Adenine | Cytosine | Guanine | Uracil)
 type GappedRNA is Gapped[RNAType, RNA]
 primitive RNA is (Alphabet[RNAType] & Complement[RNAType])
     fun letters(): Array[RNAType] val => [Adenine; Cytosine; Guanine; Uracil]
-    fun string(): String iso^ => "ACGU".clone()
 
     fun parse(letter: String): (RNAType | None) =>
         match letter
@@ -26,7 +25,6 @@ type DNAType is (Adenine | Cytosine | Guanine | Thymine)
 type GappedDNA is Gapped[DNAType, DNA]
 primitive DNA is (Alphabet[DNAType] & Complement[DNAType])
     fun letters(): Array[DNAType] val => [Adenine; Cytosine; Guanine; Thymine]
-    fun string(): String iso^ => "ACGT".clone()
 
     fun parse(letter: String): (DNAType | None) =>
         match letter
@@ -55,7 +53,6 @@ primitive IUPAC is (Alphabet[IUPACType] & Complement[IUPACType])
             Amino; Purine; Weak; Strong; Pyrimidine; Keto
             V; H; D; B; N
         ]
-    fun string(): String iso^ => "AGCTMPWSYKVHDBN".clone()
 
     fun parse(letter: String): (IUPACType | None) =>
         match letter

@@ -10,15 +10,6 @@ class Gapped[T: Letter val, U: (Alphabet[T] val & Complement[T] val)] is (Alphab
             res
         end
 
-    fun string(): String iso^ =>
-        recover iso
-            let a = recover iso U.string() end
-            let res = String(a.size() + 2)
-            res.append(consume a)
-            res.append(".-")
-            res
-        end
-
     fun parse(letter: String): (T | GapType | None) =>
         match letter
         | "-" => Dash
