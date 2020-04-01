@@ -1,0 +1,8 @@
+{
+  "deps": [
+    {
+      "type": "github",
+      "repo": "mfelsche/pony-maybe"
+    }
+  ]
+}

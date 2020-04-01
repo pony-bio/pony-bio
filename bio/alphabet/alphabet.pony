@@ -1,3 +1,5 @@
+use "maybe"
+
 interface val Letter is Stringable
     fun oneletter(): String val
 
@@ -11,7 +13,7 @@ trait val Alphabet[L: Letter val] is Stringable
         end
         false
     fun letters(): Array[L] val
-    fun parse(letter: String): (L | None)
+    fun parse(letter: String): Maybe[L]
     fun string(): String iso^ => 
         recover iso
             let arr = this.letters()
