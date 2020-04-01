@@ -10,9 +10,7 @@ actor Main
       let c = Cytosine
       let g = GappedDNA.parse("G") as DNAType
       let t = Thymine
-      env.out.print("These are the DNA nucleotides: "
-        + ", ".join([a.oneletter(); c.oneletter(); g.oneletter(); t.oneletter()].values())
-      )
+      env.out.print("These are the DNA nucleotides: " + DNA.string())
       env.out.print("Their names being, respectively:")
       env.out.print("\n".join(DNA.letters().values()))
     else
