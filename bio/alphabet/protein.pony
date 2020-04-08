@@ -61,6 +61,21 @@ class val Protein is Alphabet[AminoAcid]
             end
         end
 
+class val ThreeLetterProtein is Alphabet[AminoAcid]
+    fun letters(): Array[AminoAcid] val => Protein.letters()
+
+    fun parse(raw: String) => Protein.parse(raw)
+
+    fun string(): String iso^ =>
+        recover iso
+            let arr = this.letters()
+            let str = String(arr.size() * 3)
+            for l in arr.values() do
+                str.append(l.code_long())
+            end
+            str
+        end
+
 type AminoAcid is (Alanine       | Cysteine  | AsparticAcid | GlutamicAcid |
                    Phenylalanine | Glycine   | Histidine    | Isoleucine   |
                    Lysine        | Leucine   | Methionine   | Asparagine   |
@@ -69,100 +84,100 @@ type AminoAcid is (Alanine       | Cysteine  | AsparticAcid | GlutamicAcid |
 
 primitive Alanine
     fun string(): String iso^ => "Alanine".clone()
-    fun oneletter(): String => "A"
-    fun threeletter(): String => "Ala"
+    fun code(): String => "A"
+    fun code_long(): String => "Ala"
 
 primitive Cysteine
     fun string(): String iso^ => "Cysteine".clone()
-    fun oneletter(): String => "C"
-    fun threeletter(): String => "Cys"
+    fun code(): String => "C"
+    fun code_long(): String => "Cys"
 
 primitive AsparticAcid
     fun string(): String iso^ => "Aspartic Acid".clone()
-    fun oneletter(): String => "D"
-    fun threeletter(): String => "Asp"
+    fun code(): String => "D"
+    fun code_long(): String => "Asp"
 
 primitive GlutamicAcid
     fun string(): String iso^ => "Glutamic Acid".clone()
-    fun oneletter(): String => "E"
-    fun threeletter(): String => "Glu"
+    fun code(): String => "E"
+    fun code_long(): String => "Glu"
 
 primitive Phenylalanine
     fun string(): String iso^ => "Phenylalanine".clone()
-    fun oneletter(): String => "F"
-    fun threeletter(): String => "Phe"
+    fun code(): String => "F"
+    fun code_long(): String => "Phe"
 
 primitive Glycine
     fun string(): String iso^ => "Glycine".clone()
-    fun oneletter(): String => "G"
-    fun threeletter(): String => "Gly"
+    fun code(): String => "G"
+    fun code_long(): String => "Gly"
 
 primitive Histidine
     fun string(): String iso^ => "Histidine".clone()
-    fun oneletter(): String => "H"
-    fun threeletter(): String => "His"
+    fun code(): String => "H"
+    fun code_long(): String => "His"
 
 primitive Isoleucine
     fun string(): String iso^ => "Isoleucine".clone()
-    fun oneletter(): String => "I"
-    fun threeletter(): String => "Ile"
+    fun code(): String => "I"
+    fun code_long(): String => "Ile"
 
 primitive Lysine
     fun string(): String iso^ => "Lysine".clone()
-    fun oneletter(): String => "K"
-    fun threeletter(): String => "Lys"
+    fun code(): String => "K"
+    fun code_long(): String => "Lys"
 
 primitive Leucine
     fun string(): String iso^ => "Leucine".clone()
-    fun oneletter(): String => "L"
-    fun threeletter(): String => "Leu"
+    fun code(): String => "L"
+    fun code_long(): String => "Leu"
 
 primitive Methionine
     fun string(): String iso^ => "Methionine".clone()
-    fun oneletter(): String => "M"
-    fun threeletter(): String => "Met"
+    fun code(): String => "M"
+    fun code_long(): String => "Met"
 
 primitive Asparagine
     fun string(): String iso^ => "Asparagine".clone()
-    fun oneletter(): String => "N"
-    fun threeletter(): String => "Asn"
+    fun code(): String => "N"
+    fun code_long(): String => "Asn"
 
 primitive Proline
     fun string(): String iso^ => "Proline".clone()
-    fun oneletter(): String => "P"
-    fun threeletter(): String => "Pro"
+    fun code(): String => "P"
+    fun code_long(): String => "Pro"
 
 primitive Glutamine
     fun string(): String iso^ => "Glutamine".clone()
-    fun oneletter(): String => "Q"
-    fun threeletter(): String => "Gln"
+    fun code(): String => "Q"
+    fun code_long(): String => "Gln"
 
 primitive Arginine
     fun string(): String iso^ => "Arginine".clone()
-    fun oneletter(): String => "R"
-    fun threeletter(): String => "Arg"
+    fun code(): String => "R"
+    fun code_long(): String => "Arg"
 
 primitive Serine
     fun string(): String iso^ => "Serine".clone()
-    fun oneletter(): String => "S"
-    fun threeletter(): String => "Ser"
+    fun code(): String => "S"
+    fun code_long(): String => "Ser"
 
 primitive Threonine
     fun string(): String iso^ => "Threonine".clone()
-    fun oneletter(): String => "T"
-    fun threeletter(): String => "Thr"
+    fun code(): String => "T"
+    fun code_long(): String => "Thr"
 
 primitive Valine
     fun string(): String iso^ => "Valine".clone()
-    fun oneletter(): String => "V"
-    fun threeletter(): String => "Val"
+    fun code(): String => "V"
+    fun code_long(): String => "Val"
 
 primitive Tryptophan
     fun string(): String iso^ => "Tryptophan".clone()
-    fun oneletter(): String => "W"
-    fun threeletter(): String => "Trp"
+    fun code(): String => "W"
+    fun code_long(): String => "Trp"
 
 primitive Tyrosine
     fun string(): String iso^ => "Tyrosined".clone()
-    fun oneletter(): String => "Y"
-    fun threeletter(): String => "Tyr"
+    fun code(): String => "Y"
+    fun code_long(): String => "Tyr"
