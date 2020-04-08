@@ -26,4 +26,4 @@ trait val Alphabet[L: Letter val] is Stringable
         end
 
 interface val Complement[L: Letter val]
-    fun complement(letter: L): L => letter
+    fun complement(letter: L): Maybe[L] => None

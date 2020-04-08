@@ -15,7 +15,7 @@ primitive RNA is (Alphabet[RNAType] & Complement[RNAType])
         | "U" => Uracil
         end
 
-    fun complement(nucleotide: RNAType): RNAType =>
+    fun complement(nucleotide: RNAType): Maybe[RNAType] =>
         match nucleotide
         | Adenine => Uracil
         | Cytosine => Guanine
@@ -36,7 +36,7 @@ primitive DNA is (Alphabet[DNAType] & Complement[DNAType])
         | "T" => Thymine
         end
 
-    fun complement(nucleotide: DNAType): DNAType =>
+    fun complement(nucleotide: DNAType): Maybe[DNAType] =>
         match nucleotide
         | Adenine => Thymine
         | Cytosine => Guanine
@@ -76,7 +76,7 @@ primitive IUPAC is (Alphabet[IUPACType] & Complement[IUPACType])
         else None
         end
 
-    fun complement(nucleotide: IUPACType): IUPACType =>
+    fun complement(nucleotide: IUPACType): Maybe[IUPACType] =>
         match nucleotide
         | Adenine => Thymine
         | Cytosine => Guanine

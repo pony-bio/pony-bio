@@ -22,7 +22,7 @@ class Gapped[T: Letter val, U: (Alphabet[T] val & Complement[T] val)] is (Alphab
         else U.parse(letter)
         end
 
-    fun complement(nucleotide: (T | GapType)): (T | GapType) =>
+    fun complement(nucleotide: (T | GapType)): Maybe[(T | GapType)] =>
         match nucleotide
         | Dash => Dash
         | Dot => Dot
