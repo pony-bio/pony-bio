@@ -1,3 +1,5 @@
+use "maybe"
+
 type Nucleotide is (DNAType | RNAType)
 
 type RNAType is (Adenine | Cytosine | Guanine | Uracil)
@@ -5,7 +7,7 @@ type GappedRNA is Gapped[RNAType, RNA]
 primitive RNA is (Alphabet[RNAType] & Complement[RNAType])
     fun letters(): Array[RNAType] val => [Adenine; Cytosine; Guanine; Uracil]
 
-    fun parse(letter: String): (RNAType | None) =>
+    fun parse(letter: String): Maybe[RNAType] =>
         match letter
         | "A" => Adenine
         | "C" => Cytosine
@@ -26,7 +28,7 @@ type GappedDNA is Gapped[DNAType, DNA]
 primitive DNA is (Alphabet[DNAType] & Complement[DNAType])
     fun letters(): Array[DNAType] val => [Adenine; Cytosine; Guanine; Thymine]
 
-    fun parse(letter: String): (DNAType | None) =>
+    fun parse(letter: String): Maybe[DNAType] =>
         match letter
         | "A" => Adenine
         | "C" => Cytosine
@@ -54,7 +56,7 @@ primitive IUPAC is (Alphabet[IUPACType] & Complement[IUPACType])
             V; H; D; B; N
         ]
 
-    fun parse(letter: String): (IUPACType | None) =>
+    fun parse(letter: String): Maybe[IUPACType] =>
         match letter
         | "A" => Adenine
         | "C" => Cytosine

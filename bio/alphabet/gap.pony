@@ -1,3 +1,5 @@
+use "maybe"
+
 type GapType is (Dash | Dot)
 
 class Gapped[T: Letter val, U: (Alphabet[T] val & Complement[T] val)] is (Alphabet[(T | GapType)] & Complement[(T | GapType)])
@@ -10,7 +12,7 @@ class Gapped[T: Letter val, U: (Alphabet[T] val & Complement[T] val)] is (Alphab
             res
         end
 
-    fun parse(letter: String): (T | GapType | None) =>
+    fun parse(letter: String): Maybe[(T | GapType)] =>
         match letter
         | "-" => Dash
         | "." => Dot
