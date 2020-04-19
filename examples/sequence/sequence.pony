@@ -7,6 +7,14 @@ use "../../bio/sequence"
 actor Main
   new create(env: Env) =>
     let sequence = DNASequence([as DNAType: Adenine; Cytosine; Adenine])
+    env.out.print("Here is a subset of the sequence `ACA`: ")
+
     for letter in sequence.range(1, 3) do
+      env.out.print(letter.string())
+    end
+
+    env.out.print("Here is the same sequence, reversed: ")
+
+    for letter in DNASequence(sequence.range(1, 3).collect()).reverse().range() do
       env.out.print(letter.string())
     end

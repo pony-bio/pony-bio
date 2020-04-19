@@ -6,10 +6,10 @@ trait Sequence[L: Letter val, A: Alphabet[L] val] is Stringable
 
   fun length(): USize
 
-  fun get(pos: USize): Maybe[L]
+  fun apply(pos: USize): Maybe[L]
 
-  fun range(from: USize, to: USize): Iterator[L] =>
-    RangeIterator[L, A](this, from, to)
+  fun range(from: USize = 0, to: USize = USize(-1)): RangeIterator[L, A] =>
+    RangeIterator[L, A](this, from, if to == USize(-1) then this.length() else to end)
 
   fun tag alphabet(): Alphabet[L] => A
 
@@ -39,4 +39,15 @@ class RangeIterator[L: Letter val, A: Alphabet[L] val] is Iterator[L]
     (_pos < _to) and (_pos < _seq.length())
 
   fun ref next(): L? =>
-    Opt.force[L](_seq.get(_pos = _pos + 1))?
+    Opt.force[L](_seq.apply(_pos = _pos + 1))?
+
+  fun ref collect(): Array[L] ref =>
+    let res = Array[L](_to - _pos)
+    while has_next() do
+      try
+        res.push(next()?)
+      else
+        break
+      end
+    end
+    res

@@ -10,7 +10,7 @@ class DNASequence is Sequence[DNAType, DNA]
   fun length(): USize =>
     seq.size()
 
-  fun get(pos: USize): Maybe[DNAType] =>
+  fun apply(pos: USize): Maybe[DNAType] =>
     try seq(pos)? else None end
 
   fun reverse(): DNASequence ref =>
@@ -55,7 +55,7 @@ class RNASequence is Sequence[RNAType, RNA]
   fun length(): USize =>
     seq.size()
 
-  fun get(pos: USize): Maybe[RNAType] =>
+  fun apply(pos: USize): Maybe[RNAType] =>
     try seq(pos)? else None end
 
   fun reverse(): RNASequence =>
