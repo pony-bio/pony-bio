@@ -1,7 +1,7 @@
 config ?= release
 
 PACKAGE := bio
-COMPILE_WITH := stable env ponyc
+COMPILE_WITH := corral run -- ponyc
 
 BUILD_DIR ?= build/$(config)
 SRC_DIR := $(PACKAGE)

@@ -1,0 +1,8 @@
+{
+  "locks": [
+    {
+      "locator": "github.com/mfelsche/pony-maybe.git",
+      "revision": "master"
+    }
+  ]
+}

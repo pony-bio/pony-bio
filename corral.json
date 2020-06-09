@@ -1,0 +1,8 @@
+{
+  "deps": [
+    {
+      "locator": "github.com/mfelsche/pony-maybe.git"
+    }
+  ],
+  "info": {}
+}
