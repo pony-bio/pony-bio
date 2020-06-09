@@ -6,9 +6,9 @@ use "../../bio/alphabet"
 actor Main
   new create(env: Env) =>
     try
-      let a = DNA.parse("A") as DNAType
+      let a = DNA.parse("A") as DNALetters
       let c = Cytosine
-      let g = GappedDNA.parse("G") as DNAType
+      let g = GappedDNA.parse("G") as DNALetters
       let t = Thymine
       env.out.print("These are the DNA nucleotides: " + DNA.string())
       env.out.print("Their names being, respectively:")
