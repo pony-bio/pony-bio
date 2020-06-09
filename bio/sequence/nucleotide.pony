@@ -1,16 +1,16 @@
 use "../alphabet"
 use "maybe"
 
-class DNASequence is Sequence[DNAType, DNA]
-  let seq: Array[DNAType] ref
+class DNASequence is Sequence[DNALetters, DNA]
+  let seq: Array[DNALetters] ref
 
-  new create(seq': Array[DNAType] box) =>
+  new create(seq': Array[DNALetters] box) =>
     seq = seq'.clone()
 
   fun length(): USize =>
     seq.size()
 
-  fun apply(pos: USize): Maybe[DNAType] =>
+  fun apply(pos: USize): Maybe[DNALetters] =>
     try seq(pos)? else None end
 
   fun reverse(): DNASequence ref =>
@@ -46,16 +46,16 @@ class DNASequence is Sequence[DNAType, DNA]
     complement_in_place()
     reverse_in_place()
 
-class RNASequence is Sequence[RNAType, RNA]
-  let seq: Array[RNAType] ref
+class RNASequence is Sequence[RNALetters, RNA]
+  let seq: Array[RNALetters] ref
 
-  new create(seq': Array[RNAType] box) =>
+  new create(seq': Array[RNALetters] box) =>
     seq = seq'.clone()
 
   fun length(): USize =>
     seq.size()
 
-  fun apply(pos: USize): Maybe[RNAType] =>
+  fun apply(pos: USize): Maybe[RNALetters] =>
     try seq(pos)? else None end
 
   fun reverse(): RNASequence =>
@@ -66,7 +66,7 @@ class RNASequence is Sequence[RNAType, RNA]
 
 primitive Transcriber
   fun to_rna(dna: DNASequence box): RNASequence ref =>
-    let res = Array[RNAType](dna.seq.size())
+    let res = Array[RNALetters](dna.seq.size())
     for letter in dna.seq.values() do
       res.push(match letter
         | Adenine => Adenine
@@ -78,7 +78,7 @@ primitive Transcriber
     RNASequence(res)
 
   fun to_dna(rna: RNASequence box): DNASequence ref =>
-    let res = Array[DNAType](rna.seq.size())
+    let res = Array[DNALetters](rna.seq.size())
     for letter in rna.seq.values() do
       res.push(match letter
         | Adenine => Adenine

@@ -1,28 +1,28 @@
 use "maybe"
 
-type GapType is (Dash | Dot)
+type Gap is (Dash | Dot)
 
-class Gapped[T: Letter val, U: (Alphabet[T] val & Complement[T] val)] is (Alphabet[(T | GapType)] & Complement[(T | GapType)])
+class Gapped[T: Letter val, U: (Alphabet[T] val & Complement[T] val)] is (Alphabet[(T | Gap)] & Complement[(T | Gap)])
     """
     Extends the alphabet `U` with `Dash` and `Dot`.
     """
-    fun letters(): Array[(T | GapType)] val =>
+    fun letters(): Array[(T | Gap)] val =>
         recover val
             let l = U.letters()
-            let res = Array[(T | GapType)](l.size() + 2)
-            res.append([as (T | GapType): Dot; Dash])
+            let res = Array[(T | Gap)](l.size() + 2)
+            res.append([as (T | Gap): Dot; Dash])
             res.append(l)
             res
         end
 
-    fun parse(letter: String): Maybe[(T | GapType)] =>
+    fun parse(letter: String): Maybe[(T | Gap)] =>
         match letter
         | "-" => Dash
         | "." => Dot
         else U.parse(letter)
         end
 
-    fun complement(nucleotide: (T | GapType)): Maybe[(T | GapType)] =>
+    fun complement(nucleotide: (T | Gap)): Maybe[(T | Gap)] =>
         match nucleotide
         | Dash => Dash
         | Dot => Dot
