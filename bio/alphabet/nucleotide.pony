@@ -1,13 +1,13 @@
 use "maybe"
 
-type Nucleotide is (DNAType | RNAType)
+type Nucleotide is (DNALetters | RNALetters)
 
-type RNAType is (Adenine | Cytosine | Guanine | Uracil)
-type GappedRNA is Gapped[RNAType, RNA]
-primitive RNA is (Alphabet[RNAType] & Complement[RNAType])
-    fun letters(): Array[RNAType] val => [Adenine; Cytosine; Guanine; Uracil]
+type RNALetters is (Adenine | Cytosine | Guanine | Uracil)
+type GappedRNA is Gapped[RNALetters, RNA]
+primitive RNA is (Alphabet[RNALetters] & Complement[RNALetters])
+    fun letters(): Array[RNALetters] val => [Adenine; Cytosine; Guanine; Uracil]
 
-    fun parse(letter: String): Maybe[RNAType] =>
+    fun parse(letter: String): Maybe[RNALetters] =>
         match letter
         | "A" => Adenine
         | "C" => Cytosine
@@ -15,7 +15,7 @@ primitive RNA is (Alphabet[RNAType] & Complement[RNAType])
         | "U" => Uracil
         end
 
-    fun complement(nucleotide: RNAType): Maybe[RNAType] =>
+    fun complement(nucleotide: RNALetters): Maybe[RNALetters] =>
         match nucleotide
         | Adenine => Uracil
         | Cytosine => Guanine
@@ -23,12 +23,12 @@ primitive RNA is (Alphabet[RNAType] & Complement[RNAType])
         | Uracil => Adenine
         end
 
-type DNAType is (Adenine | Cytosine | Guanine | Thymine)
-type GappedDNA is Gapped[DNAType, DNA]
-primitive DNA is (Alphabet[DNAType] & Complement[DNAType])
-    fun letters(): Array[DNAType] val => [Adenine; Cytosine; Guanine; Thymine]
+type DNALetters is (Adenine | Cytosine | Guanine | Thymine)
+type GappedDNA is Gapped[DNALetters, DNA]
+primitive DNA is (Alphabet[DNALetters] & Complement[DNALetters])
+    fun letters(): Array[DNALetters] val => [Adenine; Cytosine; Guanine; Thymine]
 
-    fun parse(letter: String): Maybe[DNAType] =>
+    fun parse(letter: String): Maybe[DNALetters] =>
         match letter
         | "A" => Adenine
         | "C" => Cytosine
@@ -36,7 +36,7 @@ primitive DNA is (Alphabet[DNAType] & Complement[DNAType])
         | "T" => Thymine
         end
 
-    fun complement(nucleotide: DNAType): Maybe[DNAType] =>
+    fun complement(nucleotide: DNALetters): Maybe[DNALetters] =>
         match nucleotide
         | Adenine => Thymine
         | Cytosine => Guanine
@@ -44,19 +44,19 @@ primitive DNA is (Alphabet[DNAType] & Complement[DNAType])
         | Thymine => Adenine
         end
 
-type IUPACType is (Adenine | Cytosine | Guanine | Thymine
+type IUPACLetters is (Adenine | Cytosine | Guanine | Thymine
     | Amino | Purine | Weak | Strong | Pyrimidine | Keto
     | V | H | D | B | N)
-type GappedIUPAC is Gapped[IUPACType, IUPAC]
-primitive IUPAC is (Alphabet[IUPACType] & Complement[IUPACType])
-    fun letters(): Array[IUPACType] val =>
+type GappedIUPAC is Gapped[IUPACLetters, IUPAC]
+primitive IUPAC is (Alphabet[IUPACLetters] & Complement[IUPACLetters])
+    fun letters(): Array[IUPACLetters] val =>
         [
             Adenine; Cytosine; Guanine; Thymine
             Amino; Purine; Weak; Strong; Pyrimidine; Keto
             V; H; D; B; N
         ]
 
-    fun parse(letter: String): Maybe[IUPACType] =>
+    fun parse(letter: String): Maybe[IUPACLetters] =>
         match letter
         | "A" => Adenine
         | "C" => Cytosine
@@ -76,7 +76,7 @@ primitive IUPAC is (Alphabet[IUPACType] & Complement[IUPACType])
         else None
         end
 
-    fun complement(nucleotide: IUPACType): Maybe[IUPACType] =>
+    fun complement(nucleotide: IUPACLetters): Maybe[IUPACLetters] =>
         match nucleotide
         | Adenine => Thymine
         | Cytosine => Guanine
