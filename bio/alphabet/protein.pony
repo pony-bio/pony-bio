@@ -76,6 +76,8 @@ class val ThreeLetterProtein is Alphabet[AminoAcid]
             str
         end
 
+type StoppableProtein is Stoppable[AminoAcid, Protein]
+
 type AminoAcid is (Alanine       | Cysteine  | AsparticAcid | GlutamicAcid |
                    Phenylalanine | Glycine   | Histidine    | Isoleucine   |
                    Lysine        | Leucine   | Methionine   | Asparagine   |

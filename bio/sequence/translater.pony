@@ -1,30 +1,28 @@
 use "../alphabet"
 
 primitive Translater
-  fun apply(rna: RNASequence box): ProteinSequence ref =>
-    let res = Array[AminoAcid](rna.seq.size() / 3)
+  fun apply(rna: RNASequence box): StoppableProteinSequence ref =>
+    let res = Array[(AminoAcid | Stop)](rna.seq.size() / 3)
     let codon = Array[RNALetters](3)
     for (i, l) in rna.seq.pairs() do
       if (i % 3) == 0 then 
         if i == 0 then continue end  // Skip the first index
-        try  // TODO: Find a way to avoid partial apply function in Array
-          res.push(StandardCodonTable((codon(0)?, codon(1)?, codon(2)?)) as AminoAcid)
+        try
+          let aa: (AminoAcid | Stop | None) = StandardCodonTable((codon(0)?, codon(1)?, codon(2)?))
+          match aa 
+            | AminoAcid => res.push(aa)
+            | Stop => res.push(aa)
+            | None => error  // Translation table should be exhaustive
+          end
         end
         codon.clear()
       end
       codon.push(l)
     end
-    ProteinSequence(res)
-
-
-primitive StopCodon
-    fun string(): String iso^ => "Stop".clone()
-    fun code(): String => "*"
-    fun code_long(): String => "Ter"
-
+    StoppableProteinSequence(res)
 
 primitive StandardCodonTable
-  fun apply(codon: Codon): (AminoAcid | StopCodon | None) => 
+  fun apply(codon: Codon): (AminoAcid | Stop | None) => 
     match codon 
       | (Uracil, Uracil, Uracil)       => Phenylalanine // UUU F Phe
       | (Uracil, Uracil, Cytosine)     => Phenylalanine // UUC F Phe
@@ -36,11 +34,11 @@ primitive StandardCodonTable
       | (Uracil, Cytosine, Guanine)    => Serine        // UCG S Ser
       | (Uracil, Adenine, Uracil)      => Tyrosine      // UAU Y Tyr
       | (Uracil, Adenine, Cytosine)    => Tyrosine      // UAC Y Tyr
-      | (Uracil, Adenine, Adenine)     => StopCodon     // UAA * Ter 
-      | (Uracil, Adenine, Guanine)     => StopCodon     // UAG * Ter
+      | (Uracil, Adenine, Adenine)     => Stop          // UAA * Ter 
+      | (Uracil, Adenine, Guanine)     => Stop          // UAG * Ter
       | (Uracil, Guanine, Uracil)      => Cysteine      // UGU C Cys
       | (Uracil, Guanine, Cytosine)    => Cysteine      // UGC C Cys  
-      | (Uracil, Guanine, Adenine)     => StopCodon     // UGA * Ter 
+      | (Uracil, Guanine, Adenine)     => Stop          // UGA * Ter 
       | (Uracil, Guanine, Guanine)     => Tryptophan    // UGG W Trp
       | (Cytosine, Uracil, Uracil)     => Leucine       // CUU L Leu
       | (Cytosine, Uracil, Cytosine)   => Leucine       // CUC L Leu
