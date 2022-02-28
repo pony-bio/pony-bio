@@ -1,12 +1,11 @@
 use "../alphabet"
-use "maybe"
 
 trait Sequence[L: Letter val, A: Alphabet[L] val] is Stringable
   new create(seq': Array[L] box)
 
   fun length(): USize
 
-  fun apply(pos: USize): Maybe[L]
+  fun apply(pos: USize): (L | None)
 
   fun range(from: USize = 0, to: USize = USize(-1)): RangeIterator[L, A] =>
     RangeIterator[L, A](this, from, if to == USize(-1) then this.length() else to end)
@@ -39,7 +38,7 @@ class RangeIterator[L: Letter val, A: Alphabet[L] val] is Iterator[L]
     (_pos < _to) and (_pos < _seq.length())
 
   fun ref next(): L? =>
-    Opt.force[L](_seq.apply(_pos = _pos + 1))?
+    _seq.apply(_pos = _pos + 1) as L
 
   fun ref collect(): Array[L] ref =>
     let res = Array[L](_to - _pos)

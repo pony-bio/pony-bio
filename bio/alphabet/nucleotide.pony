@@ -1,5 +1,3 @@
-use "maybe"
-
 type Nucleotide is (DNALetters | RNALetters)
 
 type RNALetters is (Adenine | Cytosine | Guanine | Uracil)
@@ -7,15 +5,17 @@ type GappedRNA is Gapped[RNALetters, RNA]
 primitive RNA is (Alphabet[RNALetters] & Complement[RNALetters])
     fun letters(): Array[RNALetters] val => [Adenine; Cytosine; Guanine; Uracil]
 
-    fun parse(letter: String): Maybe[RNALetters] =>
+    fun parse(letter: String): (RNALetters | None) =>
         match letter
         | "A" => Adenine
         | "C" => Cytosine
         | "G" => Guanine
         | "U" => Uracil
+        else
+          None
         end
 
-    fun complement(nucleotide: RNALetters): Maybe[RNALetters] =>
+    fun complement(nucleotide: RNALetters): (RNALetters| None) =>
         match nucleotide
         | Adenine => Uracil
         | Cytosine => Guanine
@@ -28,7 +28,7 @@ type GappedDNA is Gapped[DNALetters, DNA]
 primitive DNA is (Alphabet[DNALetters] & Complement[DNALetters])
     fun letters(): Array[DNALetters] val => [Adenine; Cytosine; Guanine; Thymine]
 
-    fun parse(letter: String): Maybe[DNALetters] =>
+    fun parse(letter: String): (DNALetters | None) =>
         match letter
         | "A" => Adenine
         | "C" => Cytosine
@@ -36,7 +36,7 @@ primitive DNA is (Alphabet[DNALetters] & Complement[DNALetters])
         | "T" => Thymine
         end
 
-    fun complement(nucleotide: DNALetters): Maybe[DNALetters] =>
+    fun complement(nucleotide: DNALetters): (DNALetters | None) =>
         match nucleotide
         | Adenine => Thymine
         | Cytosine => Guanine
@@ -56,7 +56,7 @@ primitive IUPAC is (Alphabet[IUPACLetters] & Complement[IUPACLetters])
             V; H; D; B; N
         ]
 
-    fun parse(letter: String): Maybe[IUPACLetters] =>
+    fun parse(letter: String): (IUPACLetters | None) =>
         match letter
         | "A" => Adenine
         | "C" => Cytosine
@@ -76,7 +76,7 @@ primitive IUPAC is (Alphabet[IUPACLetters] & Complement[IUPACLetters])
         else None
         end
 
-    fun complement(nucleotide: IUPACLetters): Maybe[IUPACLetters] =>
+    fun complement(nucleotide: IUPACLetters): (IUPACLetters | None) =>
         match nucleotide
         | Adenine => Thymine
         | Cytosine => Guanine

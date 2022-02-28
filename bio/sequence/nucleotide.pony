@@ -1,5 +1,4 @@
 use "../alphabet"
-use "maybe"
 
 class DNASequence is Sequence[DNALetters, DNA]
   let seq: Array[DNALetters] ref
@@ -10,7 +9,7 @@ class DNASequence is Sequence[DNALetters, DNA]
   fun length(): USize =>
     seq.size()
 
-  fun apply(pos: USize): Maybe[DNALetters] =>
+  fun apply(pos: USize): (DNALetters | None) =>
     try seq(pos)? else None end
 
   fun reverse(): DNASequence ref =>
@@ -55,7 +54,7 @@ class RNASequence is Sequence[RNALetters, RNA]
   fun length(): USize =>
     seq.size()
 
-  fun apply(pos: USize): Maybe[RNALetters] =>
+  fun apply(pos: USize): (RNALetters | None) =>
     try seq(pos)? else None end
 
   fun reverse(): RNASequence =>

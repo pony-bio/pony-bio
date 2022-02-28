@@ -1,5 +1,3 @@
-use "maybe"
-
 type Gap is (Dash | Dot)
 
 class Gapped[T: Letter val, U: (Alphabet[T] val & Complement[T] val)] is (Alphabet[(T | Gap)] & Complement[(T | Gap)])
@@ -15,14 +13,14 @@ class Gapped[T: Letter val, U: (Alphabet[T] val & Complement[T] val)] is (Alphab
             res
         end
 
-    fun parse(letter: String): Maybe[(T | Gap)] =>
+    fun parse(letter: String): (T | Gap | None) =>
         match letter
         | "-" => Dash
         | "." => Dot
         else U.parse(letter)
         end
 
-    fun complement(nucleotide: (T | Gap)): Maybe[(T | Gap)] =>
+    fun complement(nucleotide: (T | Gap)): (T | Gap | None) =>
         match nucleotide
         | Dash => Dash
         | Dot => Dot

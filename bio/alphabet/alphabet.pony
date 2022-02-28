@@ -1,10 +1,7 @@
-use "maybe"
-
 interface val Letter is Stringable
     fun code(): String val
 
 trait val Alphabet[L: Letter val] is Stringable
-    new val create()
     fun contains(letter: L): Bool =>
         for l in this.letters().values() do
             if letter is l then
@@ -14,7 +11,7 @@ trait val Alphabet[L: Letter val] is Stringable
         false
 
     fun letters(): Array[L] val
-    fun parse(letter: String): Maybe[L]
+    fun parse(letter: String): (L | None)
     fun string(): String iso^ => 
         recover iso
             let arr = this.letters()
@@ -26,4 +23,4 @@ trait val Alphabet[L: Letter val] is Stringable
         end
 
 interface val Complement[L: Letter val]
-    fun complement(letter: L): Maybe[L] => None
+    fun complement(letter: L): (L | None) => None

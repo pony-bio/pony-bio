@@ -1,5 +1,3 @@
-use "maybe"
-
 class val Protein is Alphabet[AminoAcid]
     fun letters(): Array[AminoAcid] val =>
         [
@@ -10,7 +8,7 @@ class val Protein is Alphabet[AminoAcid]
             Threonine     ; Valine    ; Tryptophan   ; Tyrosine
         ]
 
-    fun parse(raw: String): Maybe[AminoAcid] =>
+    fun parse(raw: String): (AminoAcid | None) =>
         if raw.size() == 1 then
             try
                 match raw.upper().at_offset(1)?
