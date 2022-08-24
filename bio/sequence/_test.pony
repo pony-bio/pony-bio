@@ -7,9 +7,10 @@ actor \nodoc\ Main is TestList
 
   fun tag tests(test: PonyTest) =>
     test(_TestCount)
+    test(_TestTranscribe)
 
 class iso _TestCount is UnitTest
-  fun name():String => "DNA.count"
+  fun name(): String => "DNA.count"
 
   fun apply(h: TestHelper) =>
     let seq: String = "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC"
@@ -28,3 +29,13 @@ class iso _TestCount is UnitTest
     let expect: String = "20 12 17 21"
 
     h.assert_eq[String](consume got, expect)
+
+class iso _TestTranscribe is UnitTest
+  fun name(): String => "Transcribe"
+
+  fun apply(h: TestHelper) =>
+    let got: RNA = Transcribe(DNA("GATGGAACTTGACTACGTAAATT"))
+    let expect: RNA = RNA("GAUGGAACUUGACUACGUAAAUU")
+
+    h.assert_eq[String](got.string(), expect.string())
+

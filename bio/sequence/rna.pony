@@ -1,8 +1,6 @@
 use "collections"
 
-type Letter is U8
-
-class DNA
+class RNA
   let _seq: String
 
   new create(seq: String) =>
@@ -16,3 +14,6 @@ class DNA
     end
 
     map
+
+  fun string(): String iso^ =>
+    _seq.clone()

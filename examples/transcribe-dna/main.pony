@@ -5,7 +5,7 @@ actor Main
   new create(env: Env) =>
     let cs =
       try
-        CommandSpec.leaf("count", "Count the nucleotides. Order: AGCT", [], [
+        CommandSpec.leaf("count", "Transcribe a provided DNA sequence to RNA", [], [
           ArgSpec.string("sequence", "The sequence to count nucleotides within")
         ])? .> add_help()?
       else
@@ -27,15 +27,6 @@ actor Main
       end
 
     let seq = cmd.arg("sequence").string()
-    let counts = DNA(seq).count()
+    let rna = Transcribe(DNA(seq))
 
-    let output = recover String(12) end
-    output.append(counts.get_or_else('A', 0).string())
-    output.append(" ")
-    output.append(counts.get_or_else('C', 0).string())
-    output.append(" ")
-    output.append(counts.get_or_else('G', 0).string())
-    output.append(" ")
-    output.append(counts.get_or_else('T', 0).string())
-
-    env.out.print(consume output)
+    env.out.print(rna.string())

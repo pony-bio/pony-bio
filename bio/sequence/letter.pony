@@ -1,0 +1,1 @@
+type Letter is U8

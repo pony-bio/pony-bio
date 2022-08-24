@@ -1,5 +1,5 @@
 use "pony_test"
-use alphabet = "alphabet"
+use sequence = "sequence"
 
 actor \nodoc\ Main is TestList
   new create(env: Env) => PonyTest(env, this)
@@ -7,4 +7,4 @@ actor \nodoc\ Main is TestList
   new make() => None
 
   fun tag tests(test: PonyTest) =>
-    alphabet.Main.make().tests(test)
+    sequence.Main.make().tests(test)
