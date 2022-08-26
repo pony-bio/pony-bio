@@ -1,9 +1,9 @@
 use "collections"
 
-class RNA
-  let _seq: String
+class RNA is (Equatable[RNA box] & Stringable)
+  let _seq: String box
 
-  new create(seq: String) =>
+  new create(seq: String box) =>
     _seq = seq
 
   fun count(): Map[Letter, USize] =>
@@ -17,3 +17,9 @@ class RNA
 
   fun string(): String iso^ =>
     _seq.clone()
+
+  fun eq(that: RNA box): Bool val =>
+    this._seq == that._seq
+
+  fun ne(that: RNA box): Bool val =>
+    this._seq != that._seq
