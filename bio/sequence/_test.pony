@@ -11,6 +11,7 @@ actor \nodoc\ Main is TestList
     test(_TestCount)
     test(_TestTranscribe)
     test(Property1UnitTest[DNA](_PropertyDnaRevComp))
+    test(_TestDnaGc)
 
 class iso _TestCount is UnitTest
   fun name(): String => "DNA.count"
@@ -61,3 +62,15 @@ class _PropertyDnaRevComp is Property1[DNA]
 
   fun property(arg1: DNA, ph: PropertyHelper) =>
     ph.assert_eq[DNA](arg1, arg1.revcomp().revcomp())
+
+class iso _TestDnaGc is UnitTest
+  fun name(): String => "DNA.gc()"
+
+  fun apply(h: TestHelper) =>
+    let dna: DNA = DNA("CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT")
+    let got: F64 = dna.gc()
+    let expect: F64 = 60.9195
+    let rel: F64 = 0.0001
+    let diff = if got < expect then expect - got else got - expect end
+    
+    h.assert_true(diff < rel)

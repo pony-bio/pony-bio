@@ -30,6 +30,25 @@ class DNA is (Equatable[DNA box] & Stringable)
     end
     DNA(revseq)
 
+  fun gc(): F64 =>
+    """
+    The GC percentage of a given sequence.
+
+    Example:
+      DNA("ATGC").gc() -> 50.0
+    """
+    var content: F64 = 0.0
+    for i in Range(0, _seq.size()) do
+      try
+        match _seq(i)?
+        | 'G' => content = content + 1
+        | 'C' => content = content + 1
+        end
+      end
+    end
+    100 * (content / _seq.size().f64())
+
+
   fun string(): String iso^ =>
     _seq.clone()
 
