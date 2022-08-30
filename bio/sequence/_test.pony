@@ -19,16 +19,16 @@ class iso _TestCount is UnitTest
   fun apply(h: TestHelper) =>
     let seq: String = "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC"
 
-    let counts = DNA(seq).count()
+    let counts: NucleotideCount = DNA(seq).count()
 
     let got = recover String(12) end
-    got.append(counts.get_or_else('A', 0).string())
+    got.append(counts.adenine().string())
     got.append(" ")
-    got.append(counts.get_or_else('C', 0).string())
+    got.append(counts.cytosine().string())
     got.append(" ")
-    got.append(counts.get_or_else('G', 0).string())
+    got.append(counts.guanine().string())
     got.append(" ")
-    got.append(counts.get_or_else('T', 0).string())
+    got.append(counts.thymine().string())
 
     let expect: String = "20 12 17 21"
 

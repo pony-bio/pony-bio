@@ -30,12 +30,12 @@ actor Main
     let counts = DNA(seq).count()
 
     let output = recover String(12) end
-    output.append(counts.get_or_else('A', 0).string())
+    output.append(counts.adenine().string())
     output.append(" ")
-    output.append(counts.get_or_else('C', 0).string())
+    output.append(counts.cytosine().string())
     output.append(" ")
-    output.append(counts.get_or_else('G', 0).string())
+    output.append(counts.guanine().string())
     output.append(" ")
-    output.append(counts.get_or_else('T', 0).string())
+    output.append(counts.thymine().string())
 
     env.out.print(consume output)

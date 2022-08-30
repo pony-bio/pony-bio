@@ -6,14 +6,14 @@ class DNA is (Equatable[DNA box] & Stringable)
   new create(seq: String box) =>
     _seq = seq
 
-  fun count(): Map[Letter, USize] =>
-    let map: Map[Letter, USize] = Map[Letter, USize].create(4)
+  fun count(): NucleotideCount =>
+    let c: NucleotideCount = NucleotideCount
 
-    for c in _seq.values() do
-      map.upsert(Letter(c), 1, {(current, provided) => current + provided })
+    for l in _seq.values() do
+      c.increment(Letter(l))
     end
 
-    map
+    c
 
   fun revcomp(): DNA =>
     let revseq: String ref = _seq.clone().reverse()
